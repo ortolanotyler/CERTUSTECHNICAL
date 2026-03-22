@@ -8,17 +8,11 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ domain }) => {
   const isTrades = domain === 'skilled-trades';
-  const videoRef = React.useRef<HTMLVideoElement>(null);
   
-  // Unified video asset for landing page per user request
-  const videoSrc = "https://res.cloudinary.com/dvbubqhpp/video/upload/v1774044125/15978611-uhd_3840_2160_30fps_p9gako.mp4";
-
-  React.useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 1.0;
-      videoRef.current.defaultPlaybackRate = 1.0;
-    }
-  }, []);
+  // Sector-specific video assets
+  const videoSrc = isTrades 
+    ? "https://res.cloudinary.com/dvbubqhpp/video/upload/v1774055761/20654636-uhd_3840_2160_30fps_himwzn.mp4"
+    : "https://res.cloudinary.com/dvbubqhpp/video/upload/v1773682076/10040029-hd_1920_1080_24fps_syyduj.mp4";
 
   const brandSilver = 'text-brand-silver'; 
   const sectorTint = isTrades ? 'bg-brand-logistics/10' : 'bg-brand-navy/10';
@@ -40,9 +34,9 @@ const Hero: React.FC<HeroProps> = ({ domain }) => {
   return (
     <section id={Section.HERO} className="relative h-[100svh] w-full flex items-center overflow-hidden bg-brand-dark">
       
+      {/* 1. BACKGROUND LAYER: Cinematic Video */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <video 
-          ref={videoRef}
           key={videoSrc}
           autoPlay 
           muted 

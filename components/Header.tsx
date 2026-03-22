@@ -80,9 +80,11 @@ const Header: React.FC<HeaderProps> = ({ onReset, domain, onSwitch, onViewJobs, 
               </div>
             </div>
 
+            {/* Desktop & Large Tablet Nav (lg: 1024px+) */}
             <div className="hidden lg:flex items-center space-x-10">
               {[
                   { id: Section.INDUSTRIES, label: 'Sectors' },
+                  { id: Section.ABOUT, label: 'Firm' },
                   { id: Section.INSIGHTS, label: 'Social' }
               ].map((item) => (
                   <button 
@@ -151,6 +153,7 @@ const Header: React.FC<HeaderProps> = ({ onReset, domain, onSwitch, onViewJobs, 
           <div className="space-y-1">
              {[
                  { id: Section.INDUSTRIES, label: 'Practice Sectors', sub: 'Industry Expertise' },
+                 { id: Section.ABOUT, label: 'Firm Profile', sub: 'Our Philosophy' },
                  { id: Section.INSIGHTS, label: 'Social', sub: 'LinkedIn Feed' },
                  { id: 'JOBS', label: 'Job Openings', sub: 'Career Opportunities', action: onViewJobs },
                  { id: Section.CONTACT, label: 'Contact Us', sub: 'Global Reach' },

@@ -75,6 +75,7 @@ const Footer: React.FC<FooterProps> = ({ domain, onNavigate }) => {
                     <ul className="space-y-4">
                          {[
                              { label: 'Home', id: Section.HERO },
+                             { label: 'Firm', id: Section.ABOUT },
                              { label: 'Social', id: Section.INSIGHTS },
                              { label: 'Contact', id: Section.CONTACT },
                          ].map((link) => (

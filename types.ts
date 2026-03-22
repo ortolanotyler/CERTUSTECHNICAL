@@ -2,6 +2,7 @@ export enum Section {
   HERO = 'hero',
   INDUSTRIES = 'industries',
   SERVICES = 'services',
+  ABOUT = 'about',
   INSIGHTS = 'insights',
   CONTACT = 'contact',
   JOB_BOARD = 'job-board',

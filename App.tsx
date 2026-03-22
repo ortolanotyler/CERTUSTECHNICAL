@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import About from './components/About';
 import LinkedInFeed from './components/LinkedInFeed';
 import FeaturedJobsHero from './components/FeaturedJobsHero';
 import Services from './components/Services';
@@ -80,6 +81,7 @@ const App: React.FC = () => {
       
       <main className="relative z-10">
         <Hero domain={domain} />
+        <About domain={domain} />
         <IndustriesServed domain={domain} />
         <LinkedInFeed domain={domain} />
         <FeaturedJobsHero domain={domain} onViewJobs={() => setView('jobs')} />
