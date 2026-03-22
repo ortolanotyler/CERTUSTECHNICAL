@@ -18,17 +18,13 @@ const Hero: React.FC<HeroProps> = ({ domain }) => {
   const sectorTint = isTrades ? 'bg-brand-logistics/10' : 'bg-brand-navy/10';
 
   const content = isTrades ? {
-    label: "Certainty Delivered.",
+    label: "",
     titleLine1: "Skilled Trades",
     titleLine2: "& Operations",
-    p1: "Founded by Managing Director, Steven Franzese, The Certus Group was created in response to “Big Box” style recruitment. With over 15 years of industry and recruitment knowledge, we utilize subject matter experts to implement precise hiring based on specific cultural and motivational requirements.",
-    p2: "We strive to eliminate false start hiring while driving revenue growth. At the forefront of our delivery is longevity and quantifiable success through providing candidates with measurable achievement."
   } : {
-    label: "Certainty Delivered.",
+    label: "",
     titleLine1: "Industrial",
     titleLine2: "Excellence.",
-    p1: "Founded by Managing Director, Steven Franzese, The Certus Group was created in response to “Big Box” style recruitment. With over 15 years of industry and recruitment knowledge, we utilize subject matter experts to implement precise hiring based on specific cultural and motivational requirements.",
-    p2: "We strive to eliminate false start hiring while driving revenue growth. At the forefront of our delivery is longevity and quantifiable success through providing candidates with measurable achievement."
   };
 
   return (
@@ -77,10 +73,15 @@ const Hero: React.FC<HeroProps> = ({ domain }) => {
       {/* 3. LAYER: Primary Content Grid */}
       <div className="max-w-7xl w-full mx-auto px-6 lg:px-8 relative z-20">
         
-        <div className="flex flex-col items-start pt-24 md:pt-32 max-w-4xl">
+        <div className="flex flex-col items-end pt-12 text-right">
           
-          {/* Headline - Now Top Left Aligned */}
-          <h1 className="text-[10vw] sm:text-[8vw] md:text-[7vw] lg:text-[8.5rem] font-medium text-white leading-[0.85] md:leading-[0.82] tracking-tighter mb-12 md:mb-16 select-none relative flex flex-col items-start">
+          {/* Minimalist Calibration Badge */}
+          <div className="flex items-center gap-8 mb-8 overflow-hidden animate-[fadeIn_1s_ease-out_forwards]">
+              <div className="h-[1px] w-12 bg-white/30"></div>
+          </div>
+
+          {/* Headline */}
+          <h1 className="text-[10vw] sm:text-[8vw] md:text-[7vw] lg:text-[8.5rem] font-medium text-white leading-[0.85] md:leading-[0.82] tracking-tighter mb-8 md:mb-12 select-none relative flex flex-col items-end">
               <span className="block animate-[slideUp_1.2s_cubic-bezier(0.16,1,0.3,1)_forwards] opacity-0">
                   {content.titleLine1}
               </span>
@@ -89,20 +90,15 @@ const Hero: React.FC<HeroProps> = ({ domain }) => {
               </span>
           </h1>
 
-          {/* About Content - Now Below Headline */}
-          <div className="space-y-8 animate-[fadeIn_1.2s_ease-out_0.6s_forwards] opacity-0 max-w-2xl">
-             <div className="flex items-center gap-4">
-                <div className="w-12 h-[1px] bg-brand-silver"></div>
-                <span className="text-brand-silver font-bold tracking-[0.3em] text-[10px] uppercase">{content.label}</span>
-             </div>
-             <div className="space-y-6">
-                <p className="text-gray-300 font-light text-sm md:text-base leading-relaxed text-justify">
-                    {content.p1}
-                </p>
-                <p className="text-gray-400 font-light text-xs md:text-sm leading-relaxed text-justify italic">
-                    {content.p2}
-                </p>
-             </div>
+          {/* Action Bar */}
+          <div className="flex flex-col sm:flex-row items-end sm:items-center gap-6 md:gap-10 animate-[fadeIn_1s_ease-out_0.8s_forwards] opacity-0 w-full sm:w-auto">
+              <button 
+                  onClick={() => document.getElementById(Section.CONTACT)?.scrollIntoView({ behavior: 'smooth'})}
+                  className="group bg-white text-black px-10 h-16 flex items-center justify-center sm:justify-end gap-8 font-bold text-[11px] uppercase tracking-[0.4em] rounded-sm transition-all duration-500 hover:bg-brand-silver hover:-translate-y-1 shadow-elegant w-full sm:w-auto"
+              >
+                  Start Search
+                  <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform duration-300" />
+              </button>
           </div>
 
         </div>

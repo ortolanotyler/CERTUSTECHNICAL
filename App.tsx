@@ -12,6 +12,7 @@ import JobBoard from './components/JobBoard';
 import JobBoardPage from './components/JobBoardPage';
 import AdminPortal from './components/AdminPortal';
 import IndustriesServed from './components/IndustriesServed';
+import AIAssistant from './components/AIAssistant';
 import { Domain, View, Section } from './types';
 
 const App: React.FC = () => {
@@ -85,6 +86,7 @@ const App: React.FC = () => {
         <IndustriesServed domain={domain} />
         <LinkedInFeed domain={domain} />
         <FeaturedJobsHero domain={domain} onViewJobs={() => setView('jobs')} />
+        <AIAssistant />
         <Contact domain={domain} />
       </main>
       

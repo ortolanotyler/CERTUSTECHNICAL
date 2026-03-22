@@ -44,53 +44,23 @@ const SplitGateway: React.FC<SplitGatewayProps> = ({ onSelect, onViewJobs, onNav
   }, []);
 
   useEffect(() => {
-    const tradesVideo = tradesVideoRef.current;
-    const jobsVideo = jobsVideoRef.current;
-    
-    let tradesFrameId: number;
-    let jobsFrameId: number;
-
-    const reverseLoop = (video: HTMLVideoElement, side: 'trades' | 'jobs') => {
-      if (video.currentTime <= 0.1) {
-        video.currentTime = video.duration || 5;
-      } else {
-        video.currentTime -= 0.033;
-      }
-      
-      if (side === 'trades') {
-        tradesFrameId = requestAnimationFrame(() => reverseLoop(video, 'trades'));
-      } else {
-        jobsFrameId = requestAnimationFrame(() => reverseLoop(video, 'jobs'));
-      }
-    };
-
-    const shouldPlayTrades = isMobile || hovered === 'skilled-trades';
-    const shouldPlayJobs = isMobile || hovered === 'finance-it';
-
-    if (shouldPlayTrades && tradesVideo) {
-      if (tradesVideo.readyState >= 1) {
-        tradesFrameId = requestAnimationFrame(() => reverseLoop(tradesVideo, 'trades'));
-      } else {
-        tradesVideo.addEventListener('loadedmetadata', () => {
-          tradesFrameId = requestAnimationFrame(() => reverseLoop(tradesVideo, 'trades'));
-        }, { once: true });
-      }
+    if (isMobile) {
+      tradesVideoRef.current?.play().catch(() => {});
+      jobsVideoRef.current?.play().catch(() => {});
+      return;
     }
 
-    if (shouldPlayJobs && jobsVideo) {
-      if (jobsVideo.readyState >= 1) {
-        jobsFrameId = requestAnimationFrame(() => reverseLoop(jobsVideo, 'jobs'));
-      } else {
-        jobsVideo.addEventListener('loadedmetadata', () => {
-          jobsFrameId = requestAnimationFrame(() => reverseLoop(jobsVideo, 'jobs'));
-        }, { once: true });
-      }
+    if (hovered === 'skilled-trades' && tradesVideoRef.current) {
+      tradesVideoRef.current.play().catch(() => {});
+    } else if (tradesVideoRef.current) {
+      tradesVideoRef.current.pause();
     }
 
-    return () => {
-      cancelAnimationFrame(tradesFrameId);
-      cancelAnimationFrame(jobsFrameId);
-    };
+    if (hovered === 'finance-it' && jobsVideoRef.current) {
+      jobsVideoRef.current.play().catch(() => {});
+    } else if (jobsVideoRef.current) {
+      jobsVideoRef.current.pause();
+    }
   }, [hovered, isMobile]);
 
   const getClipPath = (side: 'left' | 'right') => {

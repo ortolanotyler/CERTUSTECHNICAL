@@ -5,12 +5,25 @@ export enum Section {
   ABOUT = 'about',
   INSIGHTS = 'insights',
   CONTACT = 'contact',
+  AI_TOOL = 'ai-tool',
   JOB_BOARD = 'job-board',
   ADMIN = 'admin'
 }
 
 export type Domain = 'skilled-trades' | 'finance-it' | null;
 export type View = 'landing' | 'jobs' | 'admin';
+
+export interface JobSpec {
+  title: string;
+  skills: string;
+  experience: string;
+}
+
+export interface GeneratedJobContent {
+  summary: string;
+  responsibilities: string[];
+  qualifications: string[];
+}
 
 export interface JobPosting {
   id: string | number;

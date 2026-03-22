@@ -8,6 +8,8 @@ interface AboutProps {
 const About: React.FC<AboutProps> = ({ domain }) => {
   // Dynamic Theme Configuration
   const theme = {
+    // Solid background to anchor the section after the Hero
+    // Updated bg to #0F151E per user request to ensure a solid start
     bg: 'bg-[#0F151E]',
     accent: 'text-brand-silver',
     line: 'bg-brand-steel',
@@ -19,6 +21,12 @@ const About: React.FC<AboutProps> = ({ domain }) => {
     subText: 'text-brand-steel',
     imageGrayscale: 'grayscale group-hover:grayscale-0',
     quoteGradient: 'from-brand-dark via-brand-dark/60'
+  };
+
+  const domainCopy = {
+    subline: "Certainty Delivered.",
+    p1: "Founded by Managing Director, Steven Franzese, The Certus Group was created in response to “Big Box” style recruitment. With over 15 years of industry and recruitment knowledge, The Certus group utilizes a team of subject matter experts to implement precise hiring based on our client’s specific cultural, experiential, and motivational requirements.",
+    p2: "The Certus Group strives to eliminate false start hiring while operating to drive revenue growth within the sectors we serve. At the forefront of our delivery is longevity and quantifiable success through providing candidates with measurable achievement and experience within the industry."
   };
 
   return (
@@ -46,16 +54,17 @@ const About: React.FC<AboutProps> = ({ domain }) => {
                     <div>
                         <div className="flex items-center gap-4 mb-4 md:mb-6">
                             <div className={`w-12 h-[1px] ${theme.line}`}></div>
-                            <span className={`${theme.accent} font-bold tracking-[0.2em] text-[10px] md:text-xs uppercase`}>Our Philosophy</span>
+                            <span className={`${theme.accent} font-bold tracking-[0.2em] text-[10px] md:text-xs uppercase`}>About Us</span>
                         </div>
                         <h2 className={`text-3xl md:text-6xl font-bold ${theme.textMain} leading-tight md:leading-none tracking-tighter`}>
-                            Longevity &<br/>
-                            <span className={theme.subText}>Quantifiable Success.</span>
+                            The Certus Group<br/>
+                            <span className={theme.subText}>{domainCopy.subline}</span>
                         </h2>
                     </div>
                     
                     <div className={`space-y-6 md:space-y-8 ${theme.textMuted} font-light text-base md:text-lg leading-relaxed max-w-xl`}>
-                        <p>We operate to drive revenue growth within the sectors we serve, ensuring every placement is a catalyst for long-term achievement.</p>
+                        <p>{domainCopy.p1}</p>
+                        <p>{domainCopy.p2}</p>
                     </div>
 
                     {/* Founder Profile */}
@@ -88,7 +97,7 @@ const About: React.FC<AboutProps> = ({ domain }) => {
                     <div className={`absolute inset-0 bg-brand-dark/20 border ${theme.border} p-2 backdrop-blur-sm`}>
                         <div className={`relative w-full h-full overflow-hidden ${domain === 'skilled-trades' ? 'bg-brand-logistics/30' : 'bg-brand-navy/30'}`}>
                              <img 
-                                src="https://res.cloudinary.com/dvbubqhpp/image/upload/v1773683085/thisisengineering-ZPeXrWxOjRQ-unsplash_qoz1ul.jpg" 
+                                src="https://res.cloudinary.com/dvbubqhpp/image/upload/v1774124808/1761140139742_ckr9uy.jpg" 
                                 alt="Technical Operations" 
                                 className="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-700 scale-100 hover:scale-105"
                              />
